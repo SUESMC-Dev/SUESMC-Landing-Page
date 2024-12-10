@@ -30,9 +30,9 @@ const HomeCardList = () => {
         <div className="home-title">
             <Flex justify="space-between" align="flex-start">
                 <Title className="home-title" level={screens.lg ? 1:2}>
-                    <span className="home-title-normal">我的世界</span>
+                    <span className="home-title-normal">程园我的世界社</span>
                     <br/>
-                    <span className="home-title-highlighted">我们的大学</span>
+                    <span className="home-title-highlighted">方 块 筑 梦</span>
                 </Title>
                 <Image src={SJMCIcon} alt="SJMC Icon" width={50} height={50} unoptimized/>
             </Flex>

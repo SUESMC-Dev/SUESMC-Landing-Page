@@ -95,7 +95,7 @@ const DetailPage = () => {
                     }
                 </Content>
                 <Footer className="layout-footer">
-                    上海交通大学 Minecraft 社 | 沪ICP备05052060号-7
+                    上海工程技术大学 ｜ 程园我的世界社
                 </Footer>
             </Layout>
             <FloatButton.Group 
