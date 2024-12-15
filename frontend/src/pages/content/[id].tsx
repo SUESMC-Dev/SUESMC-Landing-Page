@@ -63,7 +63,7 @@ const DetailPage = () => {
     return (
         <>
             <Head>
-                <title>{`${pageContent ? pageContent.title : '加载中'} - SJMC`}</title>
+                <title>{`${pageContent ? pageContent.title : '加载中'} - SUESMC`}</title>
             </Head>
             <Layout className="main-layout">
                 <Header className="layout-header">

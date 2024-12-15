@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
       <>
         <Head>
-          <title>加载中</title>
+          <title>加载中 - SUESMC</title>
         </Head>
         <></>
       </>
