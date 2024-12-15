@@ -6,7 +6,7 @@ import ThemeContext from '@/contexts/theme';
 import { MessageContext } from '@/contexts/message';
 import { getShownPages } from '@/services/pages';
 import { PageEntry } from '@/models/page';
-import SJMCIcon from '../../assets/mcclub.png';
+import SUESMCIcon from '../../assets/mcclub.png';
 
 const { Title } = Typography;
 
@@ -34,7 +34,7 @@ const HomeCardList = () => {
                     <br/>
                     <span className="home-title-highlighted">方 块 筑 梦</span>
                 </Title>
-                <Image src={SJMCIcon} alt="SJMC Icon" width={50} height={50} unoptimized/>
+                <Image src={SUESMCIcon} alt="SUESMC Icon" width={96} height={96} unoptimized/>
             </Flex>
         </div>
         {pages.map(page => (
