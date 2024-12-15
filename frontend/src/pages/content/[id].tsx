@@ -95,7 +95,7 @@ const DetailPage = () => {
                     }
                 </Content>
                 <Footer className="layout-footer">
-                    上海工程技术大学 ｜ 程园我的世界社
+                    SUESMC ｜ <a href="https://beian.miit.gov.cn/" target="_blank">沪ICP备2023020312号-1</a>
                 </Footer>
             </Layout>
             <FloatButton.Group 
