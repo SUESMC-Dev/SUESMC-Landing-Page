@@ -190,6 +190,9 @@ code {
         color: themed('secondary-text-color');
         border-top: 1px solid themed('primary-border-color');
     }
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 /* nav-bar */
