@@ -96,7 +96,7 @@ const DetailPage = () => {
                 </Content>
                 <Footer className="layout-footer">
                     <div>SUESMC ｜ <a href="https://beian.miit.gov.cn/" target="_blank">沪ICP备2023020312号-1</a></div>
-                    <div>Powered By <a href="https://github.com/SJMC-Dev/SJMC-Landing-Page">SJMC-Dev/SJMC-Landing-Page</a> ｜ <Link href="/content/copyright/">版权</Link></div>
+                    <div>改编自 <a href="https://mc.sjtu.cn/welcome/">SJMC-Landing-Page</a></div>
                 </Footer>
             </Layout>
             <FloatButton.Group 
