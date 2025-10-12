@@ -64,6 +64,11 @@
       "source": "/play",
       "destination": "/content/9/",
       "statusCode": 301
+    },
+    {
+      "source": "/guide",
+      "destination": "/content/10/",
+      "statusCode": 301
     }
   ]
 }
