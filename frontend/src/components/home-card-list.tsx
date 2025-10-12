@@ -19,7 +19,7 @@ const HomeCardList = ({ pages }: HomeCardListProps) => {
     <Space direction="vertical" style={{width: '100%'}} size="large">
         <div className="home-title">
             <Flex justify="space-between" align="flex-start">
-                <Title className="home-title" level={screens.lg ? 1:2}>
+                <Title className="home-title" level={2}>
                     <span className="home-title-normal">程园我的世界社</span>
                     <br/>
                     <span className="home-title-highlighted">方 块 筑 梦</span>

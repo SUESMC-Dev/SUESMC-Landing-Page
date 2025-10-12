@@ -56,24 +56,17 @@ export default function HomePage({ pages }: HomePageProps) {
         <meta property="og:url" content="https://suesmc.ltd" />
       </Head>
       <Layout className={screens.lg ? "lp-layout desktop" : "lp-layout"}>
-        {!screens.lg && /* For mobile devices */
-          <><Header className="layout-header">
+        <Header className="layout-header" style={{display: screens.lg ? 'none' : 'block'}}>
+          {renderBackgroundLayer()}
+        </Header>
+        <Layout>
+          <Sider width="60%" className="layout-sider" style={{display: screens.lg ? 'block' : 'none'}}>
             {renderBackgroundLayer()}
-          </Header>
-          <Content className="layout-content">
+          </Sider>
+          <Content className={screens.lg ? 'layout-content-desktop' : 'layout-content'}>
             <HomeCardList pages={pages}/>
-          </Content></>
-        }
-        {screens.lg && /* For desktop devices */
-          <Layout>
-            <Sider width="60%" className="layout-sider">
-              {renderBackgroundLayer()}
-            </Sider>
-            <Content className="layout-content-desktop">
-              <HomeCardList pages={pages}/>
-            </Content>
-          </Layout>
-        }
+          </Content>
+        </Layout>
         <Footer className="layout-footer">
           <div>SUESMC ｜ <a href="https://beian.miit.gov.cn/" target="_blank">沪ICP备2023020312号-1</a></div>
           <div>改编自 <a href="https://mc.sjtu.cn/welcome/">SJMC-Landing-Page</a></div>

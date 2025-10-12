@@ -208,7 +208,9 @@ code {
         border-left: 1px solid themed('primary-border-color');
     }
 
-    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition-property: background, border-left, color;
+    transition-duration: 0.2s;
 }
 
 .ant-layout-footer.layout-footer,
@@ -225,7 +227,9 @@ code {
     justify-content: space-around;
     flex-wrap: wrap;
 
-    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition-property: background, border-top, color;
+    transition-duration: 0.2s;
 }
 
 /* nav-bar */
