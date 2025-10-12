@@ -163,6 +163,33 @@ code {
     z-index: 0;
 }
 
+.layout-sider {
+    position: relative;
+}
+
+.bg-image-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.theme-background-image {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.theme-background-image.is-visible {
+    opacity: 1;
+}
+
+.theme-background-image > span {
+    position: absolute !important;
+    inset: 0 !important;
+}
+
 .layout-content {
     padding: 0.5vh var(--page-padding) 4vh var(--page-padding) !important;
     overflow-y: auto;
@@ -180,6 +207,8 @@ code {
         background-color: themed('primary-bg-color');
         border-left: 1px solid themed('primary-border-color');
     }
+
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .ant-layout-footer.layout-footer,
@@ -195,6 +224,8 @@ code {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 /* nav-bar */

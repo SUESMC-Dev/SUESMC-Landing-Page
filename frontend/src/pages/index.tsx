@@ -23,6 +23,27 @@ export default function HomePage({ pages }: HomePageProps) {
   const message = useContext(MessageContext);
   const themeCtx = useContext(ThemeContext);
 
+  const renderBackgroundLayer = () => (
+    <div className="bg-image-layer" aria-hidden="true">
+      <div className={`theme-background-image ${themeCtx.userTheme === 'light' ? 'is-visible' : ''}`}>
+        <Image src={BgLight}
+          alt=""
+          unoptimized
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
+      <div className={`theme-background-image ${themeCtx.userTheme === 'dark' ? 'is-visible' : ''}`}>
+        <Image src={BgDark}
+          alt=""
+          unoptimized
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
+    </div>
+  );
+
   return (
     <>
       <Head>
@@ -37,9 +58,7 @@ export default function HomePage({ pages }: HomePageProps) {
       <Layout className={screens.lg ? "lp-layout desktop" : "lp-layout"}>
         {!screens.lg && /* For mobile devices */
           <><Header className="layout-header">
-            <Image src={themeCtx.userTheme === 'light' ? BgLight : BgDark} 
-              alt="Background" unoptimized layout="fill" objectFit="cover"
-            />
+            {renderBackgroundLayer()}
           </Header>
           <Content className="layout-content">
             <HomeCardList pages={pages}/>
@@ -47,10 +66,8 @@ export default function HomePage({ pages }: HomePageProps) {
         }
         {screens.lg && /* For desktop devices */
           <Layout>
-            <Sider width="60%">
-              <Image src={themeCtx.userTheme === 'light' ? BgLight : BgDark} 
-              alt="Background" unoptimized layout="fill" objectFit="cover"
-            />
+            <Sider width="60%" className="layout-sider">
+              {renderBackgroundLayer()}
             </Sider>
             <Content className="layout-content-desktop">
               <HomeCardList pages={pages}/>
@@ -66,9 +83,11 @@ export default function HomePage({ pages }: HomePageProps) {
           shape="square"
           style={screens.lg ? { bottom: 60, right: 30 } : { bottom: 48, right: 20 }}
       >
-          {screens.lg && <Link target="_blank" href={'https://github.com/UNIkeEN/SJMC-Landing-Page'}><FloatButton 
+          {screens.lg && <FloatButton 
               icon={<GithubOutlined />}
-          /></Link>}
+              href="https://github.com/UNIkeEN/SJMC-Landing-Page"
+              target="_blank"
+          />}
           <FloatButton
               onClick={() => {themeCtx.changeTheme(themeCtx.userTheme === 'light' ? 'dark' : 'light')}}
               icon = {themeCtx.userTheme === 'light' ? <MoonOutlined /> : <SunOutlined />}
