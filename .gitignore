@@ -1,8 +1,0 @@
-# Local Netlify folder
-.netlify
-
-# Tencent Cloud EdgeOne
-.env
-.edgeone
-.edgeone/*
-.tef_dist/*
