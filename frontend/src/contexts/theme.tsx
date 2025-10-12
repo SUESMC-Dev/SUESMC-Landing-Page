@@ -1,4 +1,4 @@
-import { createContext, useEffect, useContext } from 'react';
+import { createContext, useEffect, useContext, useState } from 'react';
 import { ConfigProvider, theme } from 'antd';
 import { CodeOutlined } from '@ant-design/icons';
 import { LayoutProps } from '@/models/layout';
@@ -17,15 +17,18 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 
 export const ThemeContextProvider = (props : LayoutProps) => {
-  const [userTheme, setUserTheme] = useLocalStorage('theme', 'light')
+  const [userTheme, setUserTheme] = useState<string>('light');
+  const [userStoredTheme, setUserStoredTheme] = useLocalStorage('theme', 'light')
   const message = useContext(MessageContext);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', userTheme);
+    setUserTheme(userStoredTheme);
   }, [userTheme])
 
   const changeThemeHandler = (themeName : string) => {        
     setUserTheme(themeName);
+    setUserStoredTheme(themeName);
     message.open({
       content: `/time set ${themeName==='light'?'day':'night'}`,
       icon: <CodeOutlined />,
