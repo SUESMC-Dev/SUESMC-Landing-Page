@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/content/*",
-      "destination": "/content/id/index.html"
+      "destination": "/content/:splat/index.html"
     },
     {
       "source": "/api/*",
