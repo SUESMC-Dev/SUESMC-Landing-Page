@@ -14,7 +14,6 @@ interface HomeCardListProps {
 
 const HomeCardList = ({ pages }: HomeCardListProps) => {
     const themeCtx = useContext(ThemeContext);
-    const screens = Grid.useBreakpoint();
     return (
     <Space direction="vertical" style={{width: '100%'}} size="large">
         <div className="home-title">

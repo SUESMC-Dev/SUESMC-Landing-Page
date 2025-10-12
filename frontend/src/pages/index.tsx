@@ -1,12 +1,10 @@
-import react, { useContext } from "react";
-import Link from "next/link";
+import { useContext } from "react";
 import Head from "next/head";
 import Image from 'next/image';
 import { FloatButton, Grid, Layout } from "antd";
 import { MoonOutlined, SunOutlined, GithubOutlined } from "@ant-design/icons";
 import HomeCardList from "@/components/home-card-list";
 import ThemeContext from '@/contexts/theme';
-import { MessageContext } from '@/contexts/message';
 import { PageEntry } from '@/models/page';
 import BgLight from '../../assets/bg-light.png';
 import BgDark from '../../assets/bg-dark.png';
@@ -20,7 +18,6 @@ interface HomePageProps {
 
 export default function HomePage({ pages }: HomePageProps) {
   const screens = useBreakpoint();
-  const message = useContext(MessageContext);
   const themeCtx = useContext(ThemeContext);
 
   const renderBackgroundLayer = () => (
@@ -56,11 +53,11 @@ export default function HomePage({ pages }: HomePageProps) {
         <meta property="og:url" content="https://suesmc.ltd" />
       </Head>
       <Layout className={screens.lg ? "lp-layout desktop" : "lp-layout"}>
-        <Header className="layout-header" style={{display: screens.lg ? 'none' : 'block'}}>
+        <Header className="layout-header">
           {renderBackgroundLayer()}
         </Header>
         <Layout>
-          <Sider width="60%" className="layout-sider" style={{display: screens.lg ? 'block' : 'none'}}>
+          <Sider width="60%" className="layout-sider">
             {renderBackgroundLayer()}
           </Sider>
           <Content className={screens.lg ? 'layout-content-desktop' : 'layout-content'}>

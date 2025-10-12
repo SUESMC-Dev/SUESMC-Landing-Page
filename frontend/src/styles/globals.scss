@@ -157,6 +157,10 @@ code {
         }
         z-index: 1; 
     }
+
+    @media (max-width: 1000px) {
+        display: none;
+    }
 }
 
 .layout-header img {
@@ -165,6 +169,11 @@ code {
 
 .layout-sider {
     position: relative;
+    display: none;
+    
+    @media (max-width: 1000px) {
+        display: block;
+    }
 }
 
 .bg-image-layer {
