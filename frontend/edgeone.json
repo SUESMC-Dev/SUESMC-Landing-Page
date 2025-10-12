@@ -11,6 +11,11 @@
   ],
   "redirects": [
     {
+      "source": "$host",
+      "destination": "$wwwhost",
+      "statusCode": 301
+    },
+    {
       "source": "/mua",
       "destination": "/content/1/",
       "statusCode": 301
