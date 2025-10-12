@@ -6,6 +6,7 @@ const nextConfig = {
   },
   basePath: '',
   trailingSlash: true,
+  output: 'export',
 };
 
 export default nextConfig;

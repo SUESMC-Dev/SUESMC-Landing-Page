@@ -1,0 +1,64 @@
+{
+  "rewrites": [
+    {
+      "source": "/content/*",
+      "destination": "/content/id/index.html"
+    },
+    {
+      "source": "/api/*",
+      "destination": "/api/:splat/index.json"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/mua",
+      "destination": "/content/1/",
+      "statusCode": 301
+    },
+    {
+      "source": "/map",
+      "destination": "/content/2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/user",
+      "destination": "/content/3/",
+      "statusCode": 301
+    },
+    {
+      "source": "/join",
+      "destination": "/content/4/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about",
+      "destination": "/content/5/",
+      "statusCode": 301
+    },
+    {
+      "source": "/mail",
+      "destination": "/content/6/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fwq",
+      "destination": "/content/7/",
+      "statusCode": 301
+    },
+    {
+      "source": "/st",
+      "destination": "/content/8/",
+      "statusCode": 301
+    },
+    {
+      "source": "/bm",
+      "destination": "/content/8/",
+      "statusCode": 301
+    },
+    {
+      "source": "/play",
+      "destination": "/content/9/",
+      "statusCode": 301
+    }
+  ]
+}

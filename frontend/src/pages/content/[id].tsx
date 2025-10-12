@@ -3,10 +3,8 @@ import { Layout, Button, Space, Typography, FloatButton, Result, Grid } from "an
 import Head from "next/head";
 import Link from "next/link";
 import { ArrowLeftOutlined, MoonOutlined, SunOutlined, ArrowUpOutlined, LoadingOutlined, ShareAltOutlined, CalendarOutlined } from "@ant-design/icons";
-import { useRouter } from "next/router";
 import { MessageContext } from '@/contexts/message';
 import ThemeContext from '@/contexts/theme';
-import { getPageContent } from "@/services/pages";
 import { Page } from "@/models/page";
 import MarkdownRenderer from "@/components/markdown-renderer";
 import { EyeOutlined } from "@ant-design/icons";
@@ -16,23 +14,14 @@ import { shareContent } from "@/utils/share";
 const { Header, Footer, Content } = Layout;
 const { Title } = Typography;
 
-const DetailPage = () => {
-    const router = useRouter();
-    const message = useContext(MessageContext);
+interface DetailPageProps {
+    pageContent: Page;
+}
+
+const DetailPage = ({ pageContent }: DetailPageProps) => {
     const themeCtx = useContext(ThemeContext);
     const screens = Grid.useBreakpoint();
-    const { id } = router.query;
-
-    const [pageContent, setPageContent] = useState<Page | null>(null);
     const [showTitleInHeader, setShowTitleInHeader] = useState(false);
-
-    useEffect(() => {
-        if (typeof id === 'string') {
-            getPageContent(id)
-            .then(res => setPageContent(res))
-            .catch(err => message.error(err));
-        }
-    }, [id]);
 
     useEffect(() => {
         if (pageContent && pageContent.type === 'link') {
@@ -64,6 +53,12 @@ const DetailPage = () => {
         <>
             <Head>
                 <title>{`${pageContent ? pageContent.title : '加载中'} - SUESMC`}</title>
+                <meta name="description" content={pageContent ? (pageContent.subtitle || pageContent.content.substring(0, 150) + '...') : 'SUESMC 内容页面'} />
+                <meta name="keywords" content={pageContent ? `SUESMC, 程园我的世界社, ${pageContent.title}, 上海工程技术大学, Minecraft` : 'SUESMC, 程园我的世界社, 上海工程技术大学, Minecraft'} />
+                <meta property="og:title" content={pageContent ? `${pageContent.title} - SUESMC` : 'SUESMC'} />
+                <meta property="og:description" content={pageContent ? (pageContent.subtitle || pageContent.content.substring(0, 150) + '...') : 'SUESMC 内容页面'} />
+                <meta property="og:image" content="/assets/suesmc.png" />
+                <meta property="og:url" content={pageContent ? `https://suesmc.ltd/content/${pageContent.id}` : 'https://suesmc.ltd'} />
             </Head>
             <Layout className="main-layout">
                 <Header className="layout-header">
@@ -125,3 +120,21 @@ const DetailPage = () => {
 }
 
 export default DetailPage;
+
+import * as fs from 'fs';
+import path from 'path';
+
+export async function getStaticPaths() {
+    const pagesDir = path.join(process.cwd(), './api/pages');
+    const ids = fs.readdirSync(pagesDir).filter(dir => fs.statSync(path.join(pagesDir, dir)).isDirectory());
+    const paths = ids.map(id => ({ params: { id } }));
+    return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }: { params: { id: string } }) {
+    const filePath = path.join(process.cwd(), `./api/pages/${params.id}/index.json`);
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const data = JSON.parse(fileContents);
+    data.id = parseInt(params.id);
+    return { props: { pageContent: data } };
+}

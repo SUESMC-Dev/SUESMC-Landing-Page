@@ -1,13 +1,15 @@
 // @ts-strict-ignore
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 export type UseLocalStorage<T> = [T, Dispatch<SetStateAction<T>>];
 export default function useLocalStorage<T>(
   key: string,
   initialValue: SetStateAction<T>,
 ): UseLocalStorage<T> {
+  const isBrowser = typeof window !== "undefined";
     
   const saveToLocalStorage = (valueToStore: T) => {
+    if (!isBrowser) return;
     try {
       if (typeof valueToStore === "string") {
         localStorage.setItem(key, valueToStore);
@@ -30,9 +32,10 @@ export default function useLocalStorage<T>(
 
     return value ?? initOrCb;
   }
-
-  const [storedValue, setStoredValue] = useState<T>(() => {
-    let result: T | null;
+  const readValue = (): T => {
+    if (!isBrowser) {
+      return getValue(null, initialValue);
+    }
 
     const item = localStorage.getItem(key);
     if (item === null) {
@@ -45,16 +48,18 @@ export default function useLocalStorage<T>(
         throw new Error("Empty value");
       }
 
-      result = parsed;
+      return getValue(parsed, initialValue);
     } catch {
-      // Casting to T (which should resolve to string) because JSON.parse would
-      // throw an error if "foo" was passed, but properly casting "true" or "1"
-      // to their respective types
-      result = item as unknown as T;
+      return getValue(item as unknown as T, initialValue);
     }
+  };
 
-    return getValue(result, initialValue);
-  });
+  const [storedValue, setStoredValue] = useState<T>(readValue);
+
+  useEffect(() => {
+    if (!isBrowser) return;
+    setStoredValue(readValue());
+  }, [key]);
 
   const setValue = (value: SetStateAction<T>) => {
     const valueToStore = value instanceof Function ? value(storedValue) : value;

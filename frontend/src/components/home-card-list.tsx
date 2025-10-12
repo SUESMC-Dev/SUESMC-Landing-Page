@@ -1,30 +1,20 @@
-import react, { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Space, Typography, Grid, Flex } from "antd";
 import Image from 'next/image';
 import BasicCard from "@/components/basic-card";
 import ThemeContext from '@/contexts/theme';
-import { MessageContext } from '@/contexts/message';
-import { getShownPages } from '@/services/pages';
 import { PageEntry } from '@/models/page';
 import SUESMCIcon from '../../assets/mcclub.png';
 
 const { Title } = Typography;
 
-const HomeCardList = () => {
+interface HomeCardListProps {
+    pages: PageEntry[];
+}
 
-    const [pages, setPages] = useState<PageEntry[]>([]);
-    const message = useContext(MessageContext);
+const HomeCardList = ({ pages }: HomeCardListProps) => {
     const themeCtx = useContext(ThemeContext);
     const screens = Grid.useBreakpoint();
-
-    useEffect(() => {
-        getShownPages()
-        .then((data) => {
-            setPages(data);
-        })
-        .catch(err => message.error(err));
-    }, []);
-
     return (
     <Space direction="vertical" style={{width: '100%'}} size="large">
         <div className="home-title">

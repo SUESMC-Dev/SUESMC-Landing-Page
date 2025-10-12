@@ -6,7 +6,6 @@ import type { DocumentContext } from 'next/document';
 const MyDocument = () => (
   <Html lang="zh-Hans" data-theme="light">
     <Head>
-        <meta name="description" content="SUESMC" />
     </Head>
     <body>
       <Main />

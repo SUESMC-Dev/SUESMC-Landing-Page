@@ -4,17 +4,21 @@ import Head from "next/head";
 import Image from 'next/image';
 import { FloatButton, Grid, Layout } from "antd";
 import { MoonOutlined, SunOutlined, GithubOutlined } from "@ant-design/icons";
-// import BasicCard from "@/components/basic-card";
 import HomeCardList from "@/components/home-card-list";
 import ThemeContext from '@/contexts/theme';
 import { MessageContext } from '@/contexts/message';
+import { PageEntry } from '@/models/page';
 import BgLight from '../../assets/bg-light.png';
 import BgDark from '../../assets/bg-dark.png';
 
 const { useBreakpoint } = Grid;
 const { Header, Footer, Content, Sider } = Layout;
 
-export default function HomePage() {
+interface HomePageProps {
+    pages: PageEntry[];
+}
+
+export default function HomePage({ pages }: HomePageProps) {
   const screens = useBreakpoint();
   const message = useContext(MessageContext);
   const themeCtx = useContext(ThemeContext);
@@ -23,6 +27,12 @@ export default function HomePage() {
     <>
       <Head>
         <title>程园我的世界社 - SUESMC</title>
+        <meta name="description" content="程园我的世界社！上海工程技术大学 Minecraft 社团官方网站，提供社团介绍、服务器连接、用户中心等服务。" />
+        <meta name="keywords" content="SUESMC, 程园我的世界社, 上海工程技术大学, Minecraft, 社团, 服务器, 游戏" />
+        <meta property="og:title" content="程园我的世界社 - SUESMC" />
+        <meta property="og:description" content="程园我的世界社！上海工程技术大学 Minecraft 社团官方网站，提供社团介绍、服务器连接、用户中心等服务。" />
+        <meta property="og:image" content="/assets/suesmc.png" />
+        <meta property="og:url" content="https://suesmc.ltd" />
       </Head>
       <Layout className={screens.lg ? "lp-layout desktop" : "lp-layout"}>
         {!screens.lg && /* For mobile devices */
@@ -32,7 +42,7 @@ export default function HomePage() {
             />
           </Header>
           <Content className="layout-content">
-            <HomeCardList/>
+            <HomeCardList pages={pages}/>
           </Content></>
         }
         {screens.lg && /* For desktop devices */
@@ -43,7 +53,7 @@ export default function HomePage() {
             />
             </Sider>
             <Content className="layout-content-desktop">
-              <HomeCardList/>
+              <HomeCardList pages={pages}/>
             </Content>
           </Layout>
         }
@@ -66,4 +76,14 @@ export default function HomePage() {
       </FloatButton.Group>
     </>
   );
+}
+
+import * as fs from 'fs';
+import path from 'path';
+
+export async function getStaticProps() {
+    const filePath = path.join(process.cwd(), './api/list-pages/index.json');
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const pages = JSON.parse(fileContents);
+    return { props: { pages } };
 }

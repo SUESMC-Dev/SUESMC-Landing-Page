@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "title": "社团介绍",
+        "subtitle": "在 Minecraft 高校联盟查看",
+        "type": "link",
+        "card_color_light": "#eeeeee",
+        "card_color_dark": "#333333",
+        "logo_url": "/assets/muaball.png",
+        "banner_url": ""
+    },
+    {
+        "id": 2,
+        "title": "方块校园",
+        "subtitle": "“方块工程大”在线地图",
+        "type": "link",
+        "card_color_light": "#E7FFEB",
+        "card_color_dark": "#1d3001",
+        "logo_url": "/assets/bluemap.png",
+        "banner_url": ""
+    },
+    {
+        "id": 3,
+        "title": "用户中心",
+        "subtitle": "管理您的角色与皮肤",
+        "type": "link",
+        "card_color_light": "#FFFFE9",
+        "card_color_dark": "#302701",
+        "logo_url": "/assets/usercenter.png",
+        "banner_url": ""
+    },
+    {
+        "id": 4,
+        "title": "加入我们",
+        "subtitle": "连接服务器和报名社团",
+        "type": "article",
+        "card_color_light": "#e7fbff",
+        "card_color_dark": "#023b54",
+        "logo_url": "",
+        "banner_url": ""
+    },
+    {
+        "id": 5,
+        "title": "关于我们",
+        "subtitle": "关于 SUESMC",
+        "type": "article",
+        "card_color_light": "#FFFFFF",
+        "card_color_dark": "#000000",
+        "logo_url": "",
+        "banner_url": ""
+    }
+]
