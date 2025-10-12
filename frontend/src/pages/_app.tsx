@@ -11,8 +11,6 @@ export default function App({ Component, pageProps }: AppProps) {
     setMounted(true);
   }, []);
 
-  if (!mounted)
-    return;
   return (
     <MessageContextProvider>
       <ThemeContextProvider>
