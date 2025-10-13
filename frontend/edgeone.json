@@ -27,11 +27,6 @@
       "statusCode": 301
     },
     {
-      "source": "/join",
-      "destination": "/content/4/",
-      "statusCode": 301
-    },
-    {
       "source": "/about",
       "destination": "/content/5/",
       "statusCode": 301
