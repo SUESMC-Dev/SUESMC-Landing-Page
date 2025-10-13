@@ -3,7 +3,6 @@ import { Layout, Button, Space, Typography, FloatButton, Result, Grid } from "an
 import Head from "next/head";
 import Link from "next/link";
 import { ArrowLeftOutlined, MoonOutlined, SunOutlined, ArrowUpOutlined, LoadingOutlined, ShareAltOutlined, CalendarOutlined } from "@ant-design/icons";
-import { MessageContext } from '@/contexts/message';
 import ThemeContext from '@/contexts/theme';
 import { Page } from "@/models/page";
 import MarkdownRenderer from "@/components/markdown-renderer";
@@ -63,9 +62,11 @@ const DetailPage = ({ pageContent }: DetailPageProps) => {
             <Layout className="main-layout">
                 <Header className="layout-header">
                     <Space className="navbar">
-                        <Link href="/">
-                            <Button type="text" icon={<ArrowLeftOutlined />}/>
-                        </Link>
+                        <Button
+                            type="text"
+                            icon={<ArrowLeftOutlined />}
+                            onClick={() => history.back()}
+                        />
                         <div className={`header-title ${showTitleInHeader ? 'visible' : ''}`}>
                             {showTitleInHeader && pageContent?.title}
                         </div>
