@@ -3,10 +3,6 @@
     {
       "source": "/content/*",
       "destination": "/content/:splat/index.html"
-    },
-    {
-      "source": "/api/*",
-      "destination": "/api/:splat/index.json"
     }
   ],
   "redirects": [
