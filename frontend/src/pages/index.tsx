@@ -91,7 +91,7 @@ import * as fs from 'fs';
 import path from 'path';
 
 export async function getStaticProps() {
-    const filePath = path.join(process.cwd(), './api/list-pages/index.json');
+    const filePath = path.join(process.cwd(), './public/api/list-pages/index.json');
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const pages = JSON.parse(fileContents);
     return { props: { pages } };

@@ -125,14 +125,14 @@ import * as fs from 'fs';
 import path from 'path';
 
 export async function getStaticPaths() {
-    const pagesDir = path.join(process.cwd(), './api/pages');
+    const pagesDir = path.join(process.cwd(), './public/api/pages');
     const ids = fs.readdirSync(pagesDir).filter(dir => fs.statSync(path.join(pagesDir, dir)).isDirectory());
     const paths = ids.map(id => ({ params: { id } }));
     return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }: { params: { id: string } }) {
-    const filePath = path.join(process.cwd(), `./api/pages/${params.id}/index.json`);
+    const filePath = path.join(process.cwd(), `./public/api/pages/${params.id}/index.json`);
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const data = JSON.parse(fileContents);
     data.id = parseInt(params.id);
