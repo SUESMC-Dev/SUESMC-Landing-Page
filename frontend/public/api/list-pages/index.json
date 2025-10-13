@@ -30,10 +30,10 @@
         "banner_url": ""
     },
     {
-        "id": 4,
+        "id": 11,
         "title": "加入我们",
         "subtitle": "连接服务器和报名社团",
-        "type": "article",
+        "type": "route",
         "card_color_light": "#e7fbff",
         "card_color_dark": "#023b54",
         "logo_url": "",

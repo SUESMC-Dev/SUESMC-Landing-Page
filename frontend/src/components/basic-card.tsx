@@ -41,7 +41,12 @@ const BasicCard: React.FC<BasicCardProps> = ({
     const onRoute = () => {
         if (content_type === 'link') {
             getPageContent(id)
-            .then(res => window.location.href = res.content)
+            .then(res => window.open(res.content))
+            .catch(err => message.error(err));
+        }
+        else if (content_type === 'route') {
+            getPageContent(id)
+            .then(res => router.push(res.content))
             .catch(err => message.error(err));
         }
         else router.push(`/content/${id}`);

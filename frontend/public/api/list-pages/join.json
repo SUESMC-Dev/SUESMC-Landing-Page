@@ -1,0 +1,42 @@
+[
+    {
+        "id": 0,
+        "title": "← 返回",
+        "subtitle": "",
+        "type": "route",
+        "card_color_light": "#eeeeee",
+        "card_color_dark": "#333333",
+        "logo_url": "",
+        "banner_url": ""
+    },
+    {
+        "id": 8,
+        "title": "如何加入本社团",
+        "subtitle": "在“第二课堂系统”报名社团",
+        "type": "article",
+        "card_color_light": "#FFFFFF",
+        "card_color_dark": "#000000",
+        "logo_url": "",
+        "banner_url": ""
+    },
+    {
+        "id": 9,
+        "title": "如何配置启动器",
+        "subtitle": "如何通过“一键启动”压缩包配置启动器",
+        "type": "article",
+        "card_color_light": "#FFFFFF",
+        "card_color_dark": "#000000",
+        "logo_url": "",
+        "banner_url": ""
+    },
+    {
+        "id": 10,
+        "title": "服务器基本教程",
+        "subtitle": "SUESMC 服务器的基本概念和常用命令",
+        "type": "article",
+        "card_color_light": "#FFFFFF",
+        "card_color_dark": "#000000",
+        "logo_url": "",
+        "banner_url": ""
+    }
+]

@@ -1,0 +1,9 @@
+{
+    "title": "返回",
+    "subtitle": "返回主页",
+    "type": "route",
+    "content": "/",
+    "views_count": 0,
+    "created_at": "1970-01-01T00:00:00.000000Z",
+    "updated_at": "1970-01-01T00:00:00.000000Z"
+}

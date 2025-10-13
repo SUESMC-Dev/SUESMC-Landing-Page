@@ -4,7 +4,7 @@ import { Page, PageEntry } from '@/models/page';
 
 export const getPageContent = async (pageId: string) => {
     try {
-        const res = await axios.get(`http://localhost:8000/api/pages/${pageId}/`);
+        const res = await axios.get(`/api/pages/${pageId}/index.json`);
         console.log(res);
         const data: Page = res.data;
         return data;
@@ -15,9 +15,9 @@ export const getPageContent = async (pageId: string) => {
     }
 }
 
-export const getShownPages = async () => {
+export const getShownPages = async (pageName: string = 'index') => {
     try {
-        const res = await axios.get('http://localhost:8000/api/list-pages/');
+        const res = await axios.get(`/api/list-pages/${pageName}.json`);
         // console.log(res);
         const data: PageEntry[] = res.data;
         return data;
