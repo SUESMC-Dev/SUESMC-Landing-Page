@@ -39,12 +39,14 @@ const BasicCard: React.FC<BasicCardProps> = ({
     } as React.CSSProperties;
 
     const onRoute = () => {
+        /*
         if (content_type === 'link') {
             getPageContent(id)
             .then(res => window.location.href = res.content)
             .catch(err => message.error(err));
         }
-        else router.push(`/content/${id}`);
+        else */
+        router.push(`/content/${id}`);
     }
     
     return (
