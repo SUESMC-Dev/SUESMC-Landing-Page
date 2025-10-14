@@ -79,9 +79,6 @@ const DetailPage = ({ pageContent }: DetailPageProps) => {
                         <MarkdownRenderer content={pageContent.content}/>
                             <Space direction="horizontal" style={{ color: "#a9a9a9", marginTop: '64px' }} size="large">
                                 <Space direction="horizontal">
-                                    <EyeOutlined />{pageContent.views_count}次阅读
-                                </Space>
-                                <Space direction="horizontal">
                                     <CalendarOutlined />
                                     {pageContent.created_at === pageContent.updated_at ? '创建于' : '更新于'}
                                     {ISOtoDate(pageContent.updated_at)}
