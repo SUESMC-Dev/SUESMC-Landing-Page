@@ -2,4 +2,5 @@
 module.exports = {
   siteUrl: 'https://www.suesmc.ltd',
   generateRobotsTxt: true,
+  outDir: './out',
 }
