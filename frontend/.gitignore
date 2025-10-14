@@ -45,3 +45,9 @@ package-lock.json
 .edgeone
 .edgeone/*
 .tef_dist/*
+
+# next-sitemap
+public/sitemap.xml
+public/sitemap-*.xml
+public/robots.txt
+
