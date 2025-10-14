@@ -1,12 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { Layout, Button, Space, Typography, FloatButton, Result, Grid } from "antd";
 import Head from "next/head";
-import Link from "next/link";
 import { ArrowLeftOutlined, MoonOutlined, SunOutlined, ArrowUpOutlined, LoadingOutlined, ShareAltOutlined, CalendarOutlined } from "@ant-design/icons";
 import ThemeContext from '@/contexts/theme';
 import { Page } from "@/models/page";
 import MarkdownRenderer from "@/components/markdown-renderer";
-import { EyeOutlined } from "@ant-design/icons";
 import { ISOtoDate } from '@/utils/datetime'; 
 import { shareContent } from "@/utils/share";
 
