@@ -3,9 +3,10 @@
         "id": 0,
         "title": "← 返回",
         "subtitle": "",
-        "type": "route",
+        "type": "back",
         "card_color_light": "#eeeeee",
         "card_color_dark": "#333333",
+        "url": "",
         "logo_url": "",
         "banner_url": ""
     },
@@ -16,6 +17,7 @@
         "type": "article",
         "card_color_light": "#FFFFFF",
         "card_color_dark": "#000000",
+        "url": "",
         "logo_url": "",
         "banner_url": ""
     },
@@ -26,6 +28,7 @@
         "type": "article",
         "card_color_light": "#FFFFFF",
         "card_color_dark": "#000000",
+        "url": "",
         "logo_url": "",
         "banner_url": ""
     },
@@ -36,6 +39,7 @@
         "type": "article",
         "card_color_light": "#FFFFFF",
         "card_color_dark": "#000000",
+        "url": "",
         "logo_url": "",
         "banner_url": ""
     }

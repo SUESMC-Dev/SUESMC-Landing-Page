@@ -5,6 +5,7 @@ export interface PageEntry {
     type: string;
     card_color_light?: string;
     card_color_dark?: string;
+    url?: string;
     logo_url?: string;
     banner_url?: string;
 }

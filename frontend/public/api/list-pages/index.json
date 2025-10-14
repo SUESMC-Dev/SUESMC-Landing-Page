@@ -6,6 +6,7 @@
         "type": "link",
         "card_color_light": "#eeeeee",
         "card_color_dark": "#333333",
+        "url": "https://www.mualliance.cn/archives/577",
         "logo_url": "/assets/muaball.png",
         "banner_url": ""
     },
@@ -16,6 +17,7 @@
         "type": "link",
         "card_color_light": "#E7FFEB",
         "card_color_dark": "#1d3001",
+        "url": "https://map.suesmc.ltd/",
         "logo_url": "/assets/bluemap.png",
         "banner_url": ""
     },
@@ -26,6 +28,7 @@
         "type": "link",
         "card_color_light": "#FFFFE9",
         "card_color_dark": "#302701",
+        "url": "https://user.suesmc.ltd/",
         "logo_url": "/assets/usercenter.png",
         "banner_url": ""
     },
@@ -36,6 +39,7 @@
         "type": "route",
         "card_color_light": "#e7fbff",
         "card_color_dark": "#023b54",
+        "url": "/join",
         "logo_url": "",
         "banner_url": ""
     },
@@ -46,6 +50,7 @@
         "type": "article",
         "card_color_light": "#FFFFFF",
         "card_color_dark": "#000000",
+        "url": "",
         "logo_url": "",
         "banner_url": ""
     }

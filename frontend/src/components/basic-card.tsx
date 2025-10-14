@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { Button, Space, Typography } from 'antd';
 import { useRouter } from "next/router";
 import Color from 'color';
-import { getPageContent } from "@/services/pages";
-import { MessageContext } from '@/contexts/message';
+import Link from 'next/link';
 
 const { Title, Paragraph } = Typography;
 
@@ -13,6 +12,7 @@ interface BasicCardProps {
     title?: string;
     subtitle?: string;
     content_type?: string;
+    url?: string;
     logo_url?: string;
     banner_url?: string;
     style?: React.CSSProperties;
@@ -23,13 +23,11 @@ const BasicCard: React.FC<BasicCardProps> = ({
     title,
     subtitle,
     content_type,
+    url,
     logo_url,
     banner_url,
     style
 }) => {
-
-    const router = useRouter();
-    const message = useContext(MessageContext);
     const bgColor = Color(style.backgroundColor);
     const rgb = bgColor.rgb().object();
     const rgbVar = {
@@ -37,24 +35,13 @@ const BasicCard: React.FC<BasicCardProps> = ({
         '--card-g': rgb.g,
         '--card-b': rgb.b,
     } as React.CSSProperties;
-
-    const onRoute = () => {
-        if (content_type === 'link') {
-            getPageContent(id)
-            .then(res => window.open(res.content))
-            .catch(err => message.error(err));
-        }
-        else if (content_type === 'route') {
-            getPageContent(id)
-            .then(res => router.push(res.content))
-            .catch(err => message.error(err));
-        }
-        else router.push(`/content/${id}`);
-    }
     
     return (
-        <Button className="container basic-card" style={{...style}}
-            onClick={() => onRoute()}>
+    <Link
+        href={content_type === 'article' ? `/content/${id}` : (url || '/')}
+        target={content_type === 'link' ? '_blank' : '_self'}
+    >
+        <Button className="container basic-card" style={{...style}}>
             <div style={{width: '100%'}}>
                 {banner_url && <div className="card-banner-img" style={{ ...rgbVar }}>
                     <Image src={banner_url} 
@@ -69,6 +56,7 @@ const BasicCard: React.FC<BasicCardProps> = ({
                 </Space>
             </div>
         </Button>
+    </Link>
     )
 }
 
