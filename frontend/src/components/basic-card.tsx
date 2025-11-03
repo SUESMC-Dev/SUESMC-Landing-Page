@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { Button, Space, Typography } from 'antd';
-import { useRouter } from "next/router";
 import Color from 'color';
 import Link from 'next/link';
 
@@ -15,6 +14,8 @@ interface BasicCardProps {
     url?: string;
     logo_url?: string;
     banner_url?: string;
+    light_color?: string;
+    dark_color?: string;
     style?: React.CSSProperties;
 }
 
@@ -26,10 +27,16 @@ const BasicCard: React.FC<BasicCardProps> = ({
     url,
     logo_url,
     banner_url,
+    light_color,
+    dark_color,
     style
 }) => {
     const bgColor = Color(style.backgroundColor);
     const rgb = bgColor.rgb().object();
+    const cardVar = {
+        '--card-light': light_color,
+        '--card-dark': dark_color,
+    } as React.CSSProperties;
     const rgbVar = {
         '--card-r': rgb.r,
         '--card-g': rgb.g,
@@ -41,7 +48,7 @@ const BasicCard: React.FC<BasicCardProps> = ({
         href={content_type === 'article' ? `/content/${id}` : (url || '/')}
         target={content_type === 'link' ? '_blank' : '_self'}
     >
-        <Button className="container basic-card" style={{...style}}>
+        <Button className="container basic-card" style={{...style, ...cardVar}}>
             <div style={{width: '100%'}}>
                 {banner_url && <div className="card-banner-img" style={{ ...rgbVar }}>
                     <Image src={banner_url} 

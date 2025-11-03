@@ -17,12 +17,12 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 
 export const ThemeContextProvider = (props : LayoutProps) => {
-  const [userTheme, setUserTheme] = useState<string>('light');
+  const [userTheme, setUserTheme] = useState<string>('system');
   const [userStoredTheme, setUserStoredTheme] = useLocalStorage('theme', 'light')
   const message = useContext(MessageContext);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', userTheme);
+    document.documentElement.className = `theme-${userTheme}`;
     setUserTheme(userStoredTheme);
   }, [userTheme])
 

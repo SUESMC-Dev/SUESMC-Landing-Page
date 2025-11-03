@@ -37,6 +37,8 @@ const HomeCardList = ({ pages }: HomeCardListProps) => {
                 logo_url={page.logo_url}
                 banner_url={page.banner_url}
                 style={{backgroundColor: themeCtx.userTheme === 'light' ? page.card_color_light : page.card_color_dark}}
+                light_color={page.card_color_light}
+                dark_color={page.card_color_dark}
             />
             ))
         }

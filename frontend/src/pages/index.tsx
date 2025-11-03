@@ -22,7 +22,7 @@ export default function HomePage({ pages }: HomePageProps) {
 
   const renderBackgroundLayer = () => (
     <div className="bg-image-layer" aria-hidden="true">
-      <div className={`theme-background-image ${themeCtx.userTheme === 'light' ? 'is-visible' : ''}`}>
+      <div className={`theme-background-image light-visible`}>
         <Image src={BgLight}
           alt=""
           unoptimized
@@ -30,7 +30,7 @@ export default function HomePage({ pages }: HomePageProps) {
           objectFit="cover"
         />
       </div>
-      <div className={`theme-background-image ${themeCtx.userTheme === 'dark' ? 'is-visible' : ''}`}>
+      <div className={`theme-background-image dark-visible`}>
         <Image src={BgDark}
           alt=""
           unoptimized
@@ -38,6 +38,8 @@ export default function HomePage({ pages }: HomePageProps) {
           objectFit="cover"
         />
       </div>
+      <div className={`theme-gradient-overlay light-visible`}></div>
+      <div className={`theme-gradient-overlay dark-visible`}></div>
     </div>
   );
 

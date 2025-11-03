@@ -19,3 +19,23 @@
 .main-layout {
     font-size: 16px !important;
 }
+
+:root {
+    .ant-btn {
+        background: var(--card-light);
+    }
+}
+
+:root.theme-dark{
+    .ant-btn {
+        background: var(--card-dark);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not(.theme-light) {
+        .ant-btn{
+            background: var(--card-dark);
+        }
+    }
+}

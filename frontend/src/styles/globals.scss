@@ -6,6 +6,51 @@
 @import "@/styles/github-markdown-dark.css";
 
 /* root */
+@mixin light{
+    --primary-bg-color: #fff;
+    --secondary-bg-color: #d5e8ff;
+    --primary-border-color: #ddd;
+    --box-shadow-color: #dddddd;
+    --primary-text-color: black;
+    --secondary-text-color: #292929;
+    --scrollbar-bg-color: #ccc;
+    --scrollbar-color: #aaa;
+    --sjtu-red-color: #af3741;
+    --suesmc-blue-color: #31519d;
+    --light-visible: 1;
+    --dark-visible: 0;
+}
+
+@mixin dark {
+    --primary-bg-color: #101614;
+    --secondary-bg-color:#11211e;
+    --primary-border-color:#11211e;
+    --box-shadow-color:#0e243b;
+    --primary-text-color:white;
+    --secondary-text-color:#bbbbbb;
+    --scrollbar-bg-color: #211919;
+    --scrollbar-color: #1f1616;
+    --sjtu-red-color: #a72139;
+    --suesmc-blue-color: #31519d;
+    --light-visible: 0;
+    --dark-visible: 1;
+}
+
+
+:root {
+    @include light;
+}
+
+:root.theme-dark{
+    @include dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not(.theme-light) {
+        @include dark;
+    }
+}
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', 'Segoe UI', 'Roboto', 'Oxygen',
@@ -37,17 +82,13 @@ code {
 }
 
 ::-webkit-scrollbar-thumb {
-    @include themify {
-        background-color: themed('scrollbar-bg-color');
-    }
+    background-color: var(--scrollbar-bg-color);
 
     border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    @include themify {
-        background-color: themed('scrollbar-color');
-    }
+    background-color: var(--scrollbar-color);
 }
 
 /* basic card */
@@ -57,10 +98,7 @@ code {
     width: 100%;
     height: auto;
 
-    @include themify {
-        // background-color: themed('secondary-bg-color');
-        border: themed('primary-border-color') solid 1px;
-    }
+    border: var(--primary-border-color) solid 1px;
 
     text-align: left;
     white-space: normal;
@@ -79,23 +117,6 @@ code {
     position: relative;
     height: 17vh;
     width: 100%;
-    margin-bottom: -12px;
-
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-                to bottom,
-                rgba(var(--card-r), var(--card-g), var(--card-b), 0) 70%,
-                rgba(var(--card-r), var(--card-g), var(--card-b), 0.85) 90%,
-                rgba(var(--card-r), var(--card-g), var(--card-b), 1) 100%
-            );
-        z-index: 1; 
-    }
 }
 
 .basic-card .card-banner-img img {
@@ -129,10 +150,8 @@ code {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 
-    @include themify {
-        background-color: rgba(themed('secondary-bg-color'), 0.8) !important;
-        box-shadow: 0px 2px 10px themed('box-shadow-color');
-    }
+    background-color: rgba(var(--secondary-bg-color) 0.8) !important;
+    box-shadow: 0px 2px 10px var(--box-shadow-color);
 
     transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
     transition-property: background, color, box-shadow;
@@ -142,25 +161,6 @@ code {
 .lp-layout .layout-header {
     position: relative;
     height: 25vh;
-
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        @include themify {
-            $primary-bg-color: themed('primary-bg-color');
-            background: linear-gradient(
-                to bottom,
-                rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 0) 70%,
-                rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 0.85) 90%,
-                rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 1) 100%
-            );
-        }
-        z-index: 1; 
-    }
 
     display: none;
     @media (max-width: 1000px) {
@@ -194,22 +194,50 @@ code {
     transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.theme-background-image.is-visible {
-    opacity: 1;
-}
-
 .theme-background-image > span {
     position: absolute !important;
     inset: 0 !important;
 }
 
+.theme-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    z-index: 1;
+    &.light-visible{
+        opacity: var(--light-visible);
+        $primary-bg-color: #fff;
+        background: linear-gradient(
+            to bottom,
+            rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 0) 70%,
+            rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 0.85) 90%,
+            rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 1) 100%
+        );
+    }
+    &.dark-visible{
+        opacity: var(--dark-visible);
+        $primary-bg-color: #101614;
+        background: linear-gradient(
+            to bottom,
+            rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 0) 70%,
+            rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 0.85) 90%,
+            rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 1) 100%
+        );
+    }
+}
+
+.light-visible{
+    opacity: var(--light-visible);
+}
+.dark-visible{
+    opacity: var(--dark-visible);
+}
+
 .layout-content {
     padding: 0.5vh var(--page-padding) 4vh var(--page-padding) !important;
     overflow-y: auto;
-
-    @include themify {
-        background-color: themed('primary-bg-color');
-    }
+    background-color: var(--primary-bg-color);
 
     .markdown-body-light,
     .markdown-body-dark,
@@ -226,10 +254,8 @@ code {
     padding: 8vh calc(0.2*var(--page-padding)) 8vh calc(0.2*var(--page-padding)) !important;
     overflow-y: auto;
 
-    @include themify {
-        background-color: themed('primary-bg-color');
-        border-left: 1px solid themed('primary-border-color');
-    }
+    background-color: var(--primary-bg-color);
+    border-left: 1px solid var(--primary-border-color);
 
     transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
     transition-property: background, border-left, color;
@@ -242,10 +268,10 @@ code {
     padding-bottom: 8px;
     text-align: center;
     font-size: 12px;
-    @include themify {
-        color: themed('secondary-text-color');
-        border-top: 1px solid themed('primary-border-color');
-    }
+
+    color: var(--secondary-text-color);
+    border-top: 1px solid var(--primary-border-color);
+
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -272,10 +298,7 @@ code {
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
 
-    @include themify {
-        color: themed('primary-text-color') !important;
-    }
-
+    color: var(--primary-text-color) !important;
     animation: fadeOut 0.2s ease-in-out forwards;
 }
   
@@ -290,20 +313,14 @@ code {
 
 /* home title */
 .home-title-highlighted {
-    @include themify {
-        color: themed('suesmc-blue-color') !important;
-    }
-
+    color: var(--suesmc-blue-color) !important;
     opacity: 0;
     animation: fadeIn 0.8s ease-out forwards;
     animation-delay: 0.65s;
 }
 
 .home-title-normal {
-    @include themify {
-        color: themed('secondary-text-color') !important;
-    }
-
+    color: var(--secondary-text-color) !important;
     opacity: 0;
     animation: fadeIn 0.8s ease-out forwards;
     animation-delay: 0.25s;
